@@ -23,7 +23,6 @@ const eslintConfig = [
           endOfLine: "auto",
         },
       ],
-      "no-console": "warn", // Emite um aviso para o uso de console.log
       semi: ["error", "always"], // Exige ponto e vírgula
     },
   },
