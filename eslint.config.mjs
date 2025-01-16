@@ -17,7 +17,12 @@ const eslintConfig = [
   ),
   {
     rules: {
-      "prettier/prettier": ["error"], // Garante que o Prettier seja aplicado
+      "prettier/prettier": [
+        "error",
+        {
+          endOfLine: "auto",
+        },
+      ],
       "no-console": "warn", // Emite um aviso para o uso de console.log
       semi: ["error", "always"], // Exige ponto e vírgula
     },
