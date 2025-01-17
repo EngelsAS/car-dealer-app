@@ -14,6 +14,6 @@ export const fetchVehicleData = async (makeId: string, year: string) => {
     return data;
   } catch (error) {
     console.log(error);
-    return [];
+    throw new Error();
   }
 };
