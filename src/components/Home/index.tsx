@@ -1,10 +1,12 @@
 import React from "react";
 import VehicleFilter from "./VehicleFilter";
-import { fetchVehicleMakes } from "@/services/fetchVehicleMakes";
+import { VehicleMakesType } from "@/types/VehicleMakesType";
 
-const HomeWrapper = async () => {
-  const data = await fetchVehicleMakes();
+interface HomeWrapperProps {
+  data: VehicleMakesType[];
+}
 
+const HomeWrapper = ({ data }: HomeWrapperProps) => {
   return (
     <div className="h-screen flex flex-col gap-3 items-center justify-center">
       <div className="flex flex-col gap-3">

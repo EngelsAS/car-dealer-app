@@ -1,13 +1,11 @@
 import HomeWrapper from "@/components/Home";
-import Logo from "@/components/Shared/Logo";
-import React, { Suspense } from "react";
+import { fetchVehicleMakes } from "@/services/fetchVehicleMakes";
+import React from "react";
 
 const Home = async () => {
-  return (
-    <Suspense fallback={<Logo />}>
-      <HomeWrapper />
-    </Suspense>
-  );
+  const data = await fetchVehicleMakes();
+
+  return <HomeWrapper data={data} />;
 };
 
 export default Home;

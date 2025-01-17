@@ -6,6 +6,7 @@ import Button from "../Shared/Button";
 import InputLabel from "../Shared/InputLabel";
 import { useState } from "react";
 import Link from "next/link";
+import { yearsArray } from "../../../utils/yearsArray";
 
 interface VehicleFilterProps {
   data: VehicleMakesType[];
@@ -21,13 +22,6 @@ const VehicleFilter = ({ data }: VehicleFilterProps) => {
     makeId: "",
     modelYear: "",
   });
-
-  const startYear = 2015;
-  const currentYear = new Date().getFullYear();
-
-  const years = Array.from({ length: currentYear - startYear + 1 }, (_, i) =>
-    (startYear + i).toString(),
-  );
 
   const handleChangeFilterValues = <K extends keyof FilterValuesType>(
     key: K,
@@ -59,7 +53,7 @@ const VehicleFilter = ({ data }: VehicleFilterProps) => {
         <option label="Select The Vehicle Make" value="" disabled />
 
         {data.map((item, index) => (
-          <option key={index} label={item.MakeName} value={item.MakeName} />
+          <option key={index} label={item.MakeName} value={item.MakeId} />
         ))}
       </SelectInput>
 
@@ -71,7 +65,7 @@ const VehicleFilter = ({ data }: VehicleFilterProps) => {
         }
       >
         <option label="Select The Model Year" value="" disabled />
-        {years.map((year, index) => (
+        {yearsArray.map((year, index) => (
           <option key={index} label={year} value={year} />
         ))}
       </SelectInput>
