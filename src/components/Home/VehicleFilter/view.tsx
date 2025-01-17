@@ -1,46 +1,23 @@
-"use client";
-
-import { VehicleMakesType } from "@/types/VehicleMakesType";
-import SelectInput from "../Shared/SelectInput";
-import Button from "../Shared/Button";
-import InputLabel from "../Shared/InputLabel";
-import { useState } from "react";
+import InputLabel from "@/components/Shared/InputLabel";
+import SelectInput from "@/components/Shared/SelectInput";
+import React from "react";
+import { yearsArray } from "../../../../utils/yearsArray";
+import Button from "@/components/Shared/Button";
 import Link from "next/link";
-import { yearsArray } from "../../../utils/yearsArray";
+import { VehicleMakesType } from "@/types/VehicleMakesType";
+import useVehicleFilterModel from "./model";
 
-interface VehicleFilterProps {
+interface VehicleFilterViewProps
+  extends ReturnType<typeof useVehicleFilterModel> {
   data: VehicleMakesType[];
 }
 
-type FilterValuesType = {
-  makeId: string;
-  modelYear: string;
-};
-
-const VehicleFilter = ({ data }: VehicleFilterProps) => {
-  const [filterValues, setFilterValues] = useState({
-    makeId: "",
-    modelYear: "",
-  });
-
-  const handleChangeFilterValues = <K extends keyof FilterValuesType>(
-    key: K,
-    value: (typeof filterValues)[K],
-  ) => {
-    setFilterValues((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
-  const handleCheckButtonDisabled = () => {
-    const isSomeValueEmpty = Object.values(filterValues).some(
-      (value) => value === "",
-    );
-
-    return isSomeValueEmpty;
-  };
-
+const VehicleFilterView = ({
+  data,
+  filterValues,
+  handleChangeFilterValues,
+  handleCheckButtonDisabled,
+}: VehicleFilterViewProps) => {
   return (
     <>
       <InputLabel>Vehicle Makes</InputLabel>
@@ -78,4 +55,4 @@ const VehicleFilter = ({ data }: VehicleFilterProps) => {
   );
 };
 
-export default VehicleFilter;
+export default VehicleFilterView;

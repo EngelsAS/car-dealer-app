@@ -1,6 +1,6 @@
 import React from "react";
-import VehicleFilter from "./VehicleFilter";
 import { VehicleMakesType } from "@/types/VehicleMakesType";
+import VehicleFilter from "./VehicleFilter";
 
 interface HomeWrapperProps {
   data: VehicleMakesType[];
