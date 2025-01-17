@@ -7,8 +7,6 @@ export const fetchVehicleData = async (makeId: string, year: string) => {
       `/vehicles/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`,
     );
 
-    console.log(resp.data);
-
     const data = resp.data.Results as VehicleDataType[];
 
     return data;
